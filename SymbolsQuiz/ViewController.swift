@@ -11,7 +11,7 @@ enum Mode {
     case flashCard, quiz
 }
 
-enum QuizState {
+enum State {
     case askingQuestion, showingAnswer
 }
 
@@ -21,11 +21,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var mode: Mode = .flashCard {
         didSet {
+            state = .askingQuestion
             updateUI()
         }
     }
     
-    var state: QuizState = .askingQuestion
+    var state: State = .askingQuestion
     
     // Quiz specific state.
     var answerIsCorrect = false
@@ -86,15 +87,33 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Updates the app's UI in flash card mode.
     func updateFlashCardUI(symbolName: String) {
+        // Text field and keyboard.
+        quizAnswer.isHidden = true
+        quizAnswer.resignFirstResponder()
+        
+        // Answer label.
         if state == .showingAnswer {
             answerLabel.text = symbolName
         } else {
             answerLabel.text = "?"
         }
+
     }
     
     // Updates the app's UI in quiz mode.
     func updateQuizUI() {
+        // Text field and keyboard.
+        quizAnswer.isHidden = false
+        
+        switch state {
+        case .askingQuestion:
+            quizAnswer.text = ""
+            quizAnswer.becomeFirstResponder()
+        case .showingAnswer:
+            quizAnswer.resignFirstResponder()
+        }
+        
+        // Answer label.
         switch state {
         case .askingQuestion:
             answerLabel.text = ""
