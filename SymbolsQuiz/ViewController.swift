@@ -11,11 +11,16 @@ enum Mode {
     case flashCard, quiz
 }
 
+enum State {
+    case question, answer
+}
+
 class ViewController: UIViewController {
     let symbolList = ["A", "B", "C", "D", "E", "F", "G", "H", "I:J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U:V", "W", "X", "Y", "Z", "End of sentence"]
     var currentSymbolIndex = 0
     
     var mode: Mode = .flashCard
+    var state: State = .question
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!
@@ -24,7 +29,9 @@ class ViewController: UIViewController {
     
     
     @IBAction func showAnswer(_ sender: Any) {
-        answerLabel.text = symbolList[currentSymbolIndex]
+        state = .answer
+        
+        updateFlashCardUI()
     }
     
     @IBAction func next(_ sender: Any) {
@@ -34,22 +41,28 @@ class ViewController: UIViewController {
             currentSymbolIndex = 0
         }
         
-        updateSymbol()
+        state = .question
+        
+        updateFlashCardUI()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateSymbol()
+        updateFlashCardUI()
     }
     
-    func updateSymbol() {
+    // Updates the app's UI in flash card mode.
+    func updateFlashCardUI() {
         let symbolName = symbolList[currentSymbolIndex]
-        
         let image = UIImage(named: symbolName)
         imageView.image = image
         
-        answerLabel.text = "?"
+        if state == .answer {
+            answerLabel.text = symbolName
+        } else {
+            answerLabel.text = "?"
+        }
     }
 }
 
