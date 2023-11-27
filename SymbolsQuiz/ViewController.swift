@@ -15,12 +15,16 @@ enum State {
     case question, answer
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     let symbolList = ["A", "B", "C", "D", "E", "F", "G", "H", "I:J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U:V", "W", "X", "Y", "Z", "End of sentence"]
     var currentSymbolIndex = 0
     
     var mode: Mode = .flashCard
     var state: State = .question
+    
+    // Quiz specific state.
+    var answerIsCorrect = false
+    var correctAnswerCount = 0
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!
@@ -78,6 +82,27 @@ class ViewController: UIViewController {
     // Updates the app's UI in quiz mode.
     func updateQuizUI() {
         
+    }
+    
+    // Runs after the user hits the Return key on the keyboard.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Get the text from the text field.
+        let textFieldContents = textField.text!
+        
+        // Determine whether the user answered correctly and update appropriate quiz state.
+        if textFieldContents.uppercased() == symbolList[currentSymbolIndex] {
+            answerIsCorrect = true
+            correctAnswerCount += 1
+        } else {
+            answerIsCorrect = false
+        }
+        
+        // The app should now display the answer to the user.
+        state = .answer
+        
+        updateUI()
+        
+        return true
     }
 }
 
