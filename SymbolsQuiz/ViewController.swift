@@ -14,6 +14,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!
     
+    @IBAction func showAnswer(_ sender: Any) {
+        answerLabel.text = symbolList[currentSymbolIndex]
+    }
+    
+    @IBAction func next(_ sender: Any) {
+        currentSymbolIndex += 1
+        updateSymbol()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
