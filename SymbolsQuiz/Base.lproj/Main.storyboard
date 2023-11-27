@@ -16,25 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-9g-eEL" userLabel="Symbol Image">
-                                <rect key="frame" x="126" y="153" width="140" height="140"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-9g-eEL" userLabel="Symbol Image">
+                                <rect key="frame" x="126" y="188" width="140" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Answer Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7P-NC-Bpe">
-                                <rect key="frame" x="120" y="327" width="152" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Answer Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7P-NC-Bpe">
+                                <rect key="frame" x="120" y="370" width="152" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ty7-Kk-Lqn" userLabel="Show Answer Button">
-                                <rect key="frame" x="52" y="390" width="127" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ty7-Kk-Lqn" userLabel="Show Answer Button">
+                                <rect key="frame" x="16" y="470" width="127" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Show Answer"/>
                                 <connections>
                                     <action selector="showAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oBH-nF-q8b"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haO-kn-FEa" userLabel="Next Symbol Button">
-                                <rect key="frame" x="220" y="390" width="121" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haO-kn-FEa" userLabel="Next Symbol Button">
+                                <rect key="frame" x="256" y="470" width="121" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Next Symbol"/>
                                 <connections>
@@ -44,19 +48,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="RqQ-9g-eEL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="126" id="1XW-Qi-POz"/>
-                            <constraint firstItem="M7P-NC-Bpe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="4Ab-Vp-AMA"/>
-                            <constraint firstItem="RqQ-9g-eEL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GOt-MB-tRb"/>
-                            <constraint firstItem="RqQ-9g-eEL" firstAttribute="centerX" secondItem="M7P-NC-Bpe" secondAttribute="centerX" id="IH0-Hb-mnk"/>
-                            <constraint firstItem="haO-kn-FEa" firstAttribute="leading" secondItem="ty7-Kk-Lqn" secondAttribute="trailing" constant="41" id="PB8-zh-gYM"/>
-                            <constraint firstItem="ty7-Kk-Lqn" firstAttribute="baseline" secondItem="haO-kn-FEa" secondAttribute="baseline" id="U95-SP-jdM"/>
-                            <constraint firstItem="M7P-NC-Bpe" firstAttribute="top" secondItem="RqQ-9g-eEL" secondAttribute="bottom" constant="34" id="dUA-Zn-Uqg"/>
-                            <constraint firstItem="ty7-Kk-Lqn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="52" id="di3-wD-LiY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ty7-Kk-Lqn" secondAttribute="bottom" constant="393" id="nIg-I7-CH5"/>
-                            <constraint firstItem="ty7-Kk-Lqn" firstAttribute="top" secondItem="M7P-NC-Bpe" secondAttribute="bottom" constant="34" id="quF-Yi-awW"/>
-                            <constraint firstItem="RqQ-9g-eEL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="94" id="rmx-oC-NRe"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="answerLabel" destination="M7P-NC-Bpe" id="v4p-LM-AvV"/>
