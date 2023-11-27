@@ -7,12 +7,21 @@
 
 import UIKit
 
+enum Mode {
+    case flashCard, quiz
+}
+
 class ViewController: UIViewController {
     let symbolList = ["A", "B", "C", "D", "E", "F", "G", "H", "I:J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U:V", "W", "X", "Y", "Z", "End of sentence"]
     var currentSymbolIndex = 0
     
+    var mode: Mode = .flashCard
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var modeSelector: UISegmentedControl!
+    @IBOutlet weak var quizAnswer: UITextField!
+    
     
     @IBAction func showAnswer(_ sender: Any) {
         answerLabel.text = symbolList[currentSymbolIndex]
