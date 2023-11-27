@@ -19,7 +19,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let symbolList = ["A", "B", "C", "D", "E", "F", "G", "H", "I:J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U:V", "W", "X", "Y", "Z", "End of sentence"]
     var currentSymbolIndex = 0
     
-    var mode: Mode = .flashCard
+    var mode: Mode = .flashCard {
+        didSet {
+            updateUI()
+        }
+    }
+    
     var state: QuizState = .askingQuestion
     
     // Quiz specific state.
@@ -48,6 +53,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         state = .askingQuestion
         
         updateUI()
+    }
+    
+    @IBAction func switchModes(_ sender: Any) {
+        if modeSelector.selectedSegmentIndex == 0 {
+            mode = .flashCard
+        } else {
+            mode = .quiz
+        }
     }
     
     override func viewDidLoad() {
