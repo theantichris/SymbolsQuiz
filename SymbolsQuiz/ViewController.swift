@@ -71,20 +71,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Updates the app's UI based on its mode and state.
     func updateUI() {
+        // Update the displayed image.
+        let symbolName = symbolList[currentSymbolIndex]
+        let image = UIImage(named: symbolName)
+        imageView.image = image
+        
         switch mode {
         case .flashCard:
-            updateFlashCardUI()
+            updateFlashCardUI(symbolName: symbolName)
         case .quiz:
             updateQuizUI()
         }
     }
     
     // Updates the app's UI in flash card mode.
-    func updateFlashCardUI() {
-        let symbolName = symbolList[currentSymbolIndex]
-        let image = UIImage(named: symbolName)
-        imageView.image = image
-        
+    func updateFlashCardUI(symbolName: String) {
         if state == .showingAnswer {
             answerLabel.text = symbolName
         } else {
@@ -99,7 +100,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             answerLabel.text = ""
         case .showingAnswer:
             if answerIsCorrect {
-                answerLabel.text = "Correct!"
+                answerLabel.text = "✅"
             } else {
                 answerLabel.text = "❌"
             }
