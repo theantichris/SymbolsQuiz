@@ -20,6 +20,11 @@ class ViewController: UIViewController {
     
     @IBAction func next(_ sender: Any) {
         currentSymbolIndex += 1
+        
+        if currentSymbolIndex >= symbolList.count {
+            currentSymbolIndex = 0
+        }
+        
         updateSymbol()
     }
     
