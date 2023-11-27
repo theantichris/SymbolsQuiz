@@ -11,3 +11,4 @@ An app to help in studying Theban Script.
   - [ ] Aspects
   - [ ] Elder Futhark
   - [ ] Seax-Wica Runes
+- [ ] Better images
