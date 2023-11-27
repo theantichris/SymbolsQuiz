@@ -11,8 +11,8 @@ enum Mode {
     case flashCard, quiz
 }
 
-enum State {
-    case question, answer
+enum QuizState {
+    case askingQuestion, showingAnswer
 }
 
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var currentSymbolIndex = 0
     
     var mode: Mode = .flashCard
-    var state: State = .question
+    var state: QuizState = .askingQuestion
     
     // Quiz specific state.
     var answerIsCorrect = false
@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func showAnswer(_ sender: Any) {
-        state = .answer
+        state = .showingAnswer
         
         updateUI()
     }
@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             currentSymbolIndex = 0
         }
         
-        state = .question
+        state = .askingQuestion
         
         updateUI()
     }
@@ -72,7 +72,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let image = UIImage(named: symbolName)
         imageView.image = image
         
-        if state == .answer {
+        if state == .showingAnswer {
             answerLabel.text = symbolName
         } else {
             answerLabel.text = "?"
@@ -81,7 +81,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Updates the app's UI in quiz mode.
     func updateQuizUI() {
-        
+        switch state {
+        case .askingQuestion:
+            answerLabel.text = ""
+        case .showingAnswer:
+            if answerIsCorrect {
+                answerLabel.text = "Correct!"
+            } else {
+                answerLabel.text = "❌"
+            }
+        }
     }
     
     // Runs after the user hits the Return key on the keyboard.
@@ -98,7 +107,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
         // The app should now display the answer to the user.
-        state = .answer
+        state = .showingAnswer
         
         updateUI()
         
