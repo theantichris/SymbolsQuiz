@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let symbolList = ["A", "B", "C", "D", "E", "F", "G", "H", "IJ", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "UV", "W", "X", "Y", "Z", "End of sentence"]
+    let symbolList = ["A", "B", "C", "D", "E", "F", "G", "H", "I:J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U:V", "W", "X", "Y", "Z", "End of sentence"]
     var currentSymbolIndex = 0
     
     @IBOutlet weak var imageView: UIImageView!
@@ -16,7 +16,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        updateSymbol()
+    }
+    
+    func updateSymbol() {
+        let symbolName = symbolList[currentSymbolIndex]
+        
+        let image = UIImage(named: symbolName)
+        imageView.image = image
+        
+        answerLabel.text = "?"
     }
 }
 
