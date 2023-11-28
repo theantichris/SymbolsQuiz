@@ -33,7 +33,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haO-kn-FEa" userLabel="Next Symbol Button">
-                                <rect key="frame" x="256" y="409" width="121" height="35"/>
+                                <rect key="frame" x="214" y="408" width="163" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Next Symbol"/>
@@ -73,6 +73,7 @@
                         <outlet property="answerLabel" destination="M7P-NC-Bpe" id="v4p-LM-AvV"/>
                         <outlet property="imageView" destination="RqQ-9g-eEL" id="7l2-33-g3E"/>
                         <outlet property="modeSelector" destination="OIf-tV-ovQ" id="Ody-al-FIp"/>
+                        <outlet property="nextButton" destination="haO-kn-FEa" id="lim-C3-1LA"/>
                         <outlet property="quizAnswer" destination="VZB-lv-ofu" id="nqB-35-ggX"/>
                         <outlet property="showAnswerButton" destination="ty7-Kk-Lqn" id="l6R-Xm-JVA"/>
                     </connections>

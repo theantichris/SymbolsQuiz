@@ -43,6 +43,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var modeSelector: UISegmentedControl!
     @IBOutlet weak var quizAnswer: UITextField!
     @IBOutlet weak var showAnswerButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     
     @IBAction func showAnswer(_ sender: Any) {
@@ -118,6 +119,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // Buttons.
         showAnswerButton.isHidden = false
+        
+        nextButton.isEnabled = true
+        nextButton.setTitle("Next Symbol", for: .normal)
     }
     
     // Updates the app's UI in quiz mode.
@@ -156,6 +160,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // Buttons.
         showAnswerButton.isHidden = true
+        
+        if currentSymbolIndex == symbolList.count - 1 {
+            nextButton.setTitle("Show Score", for: .normal)
+        } else {
+            nextButton.setTitle("Next Question", for: .normal)
+        }
+        
+        switch state {
+        case .askingQuestion:
+            nextButton.isEnabled = false
+        case .showingAnswer:
+            nextButton.isEnabled = true
+        case .showingScore:
+            nextButton.isEnabled = false
+        }
     }
     
     // Runs after the user hits the Return key on the keyboard.
