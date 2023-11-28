@@ -53,6 +53,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if mode == .quiz {
                 state = .showingScore
                 updateUI()
+                
                 return
             }
         }
@@ -134,7 +135,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         case .showingScore:
             answerLabel.text = ""
-            print("Your score is \(correctAnswerCount) out of \(symbolList.count).")
+            displayScoreAlert()
         }
     }
     
@@ -157,6 +158,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         updateUI()
         
         return true
+    }
+    
+    // Shows an alert with the user's quiz score.
+    func displayScoreAlert() {
+        let alert = UIAlertController(title: "Quiz Score", message: "Your score is \(correctAnswerCount) out of \(symbolList.count).", preferredStyle: .alert)
+        
+        let dismissAction = UIAlertAction(title: "OK", style: .default, handler: scoreAlertDismissed(_:))
+        alert.addAction(dismissAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func scoreAlertDismissed(_ action: UIAlertAction) {
+        mode = .flashCard
     }
 }
 
