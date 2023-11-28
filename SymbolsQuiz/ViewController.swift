@@ -94,6 +94,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Updates the app's UI in flash card mode.
     func updateFlashCardUI(symbolName: String) {
+        // Segmented control.
+        modeSelector.selectedSegmentIndex = 0
+        
         // Text field and keyboard.
         quizAnswer.isHidden = true
         quizAnswer.resignFirstResponder()
@@ -109,6 +112,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Updates the app's UI in quiz mode.
     func updateQuizUI() {
+        // Segmented control.
+        modeSelector.selectedSegmentIndex = 1
+        
         // Text field and keyboard.
         quizAnswer.isHidden = false
         
