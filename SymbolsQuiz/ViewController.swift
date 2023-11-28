@@ -21,7 +21,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var mode: Mode = .flashCard {
         didSet {
-            state = .askingQuestion
+            switch mode {
+            case .flashCard:
+                setUpFlashCards()
+            case .quiz:
+                setUpQuiz()
+            }
+            
             updateUI()
         }
     }
@@ -47,7 +53,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func next(_ sender: Any) {
         currentSymbolIndex += 1
         
-        if currentSymbolIndex >= symbolList.count {
+        // TODO: change this back to symbolList.count after testing.
+        if currentSymbolIndex >= 4 {
             currentSymbolIndex = 0
             
             if mode == .quiz {
@@ -176,8 +183,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    // Sets the game mode to flash card after the score alert is dismissed.
     func scoreAlertDismissed(_ action: UIAlertAction) {
         mode = .flashCard
+    }
+    
+    // Sets up a new flash card session.
+    func setUpFlashCards() {
+        state = .askingQuestion
+        currentSymbolIndex = 0
+    }
+    
+    // Sets up a new quiz session.
+    func setUpQuiz() {
+        state = .askingQuestion
+        currentSymbolIndex = 0
+        answerIsCorrect = false
+        correctAnswerCount = 0
     }
 }
 
