@@ -12,7 +12,7 @@ enum Mode {
 }
 
 enum State {
-    case askingQuestion, showingAnswer
+    case askingQuestion, showingAnswer, showingScore
 }
 
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -49,6 +49,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if currentSymbolIndex >= symbolList.count {
             currentSymbolIndex = 0
+            
+            if mode == .quiz {
+                state = .showingScore
+                updateUI()
+                return
+            }
         }
         
         state = .askingQuestion
@@ -111,6 +117,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             quizAnswer.becomeFirstResponder()
         case .showingAnswer:
             quizAnswer.resignFirstResponder()
+        case .showingScore:
+            quizAnswer.isHidden = true
+            quizAnswer.resignFirstResponder()
         }
         
         // Answer label.
@@ -123,6 +132,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             } else {
                 answerLabel.text = "❌"
             }
+        case .showingScore:
+            answerLabel.text = ""
+            print("Your score is \(correctAnswerCount) out of \(symbolList.count).")
         }
     }
     
