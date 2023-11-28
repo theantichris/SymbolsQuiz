@@ -42,6 +42,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var modeSelector: UISegmentedControl!
     @IBOutlet weak var quizAnswer: UITextField!
+    @IBOutlet weak var showAnswerButton: UIButton!
     
     
     @IBAction func showAnswer(_ sender: Any) {
@@ -114,7 +115,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } else {
             answerLabel.text = "?"
         }
-
+        
+        // Buttons.
+        showAnswerButton.isHidden = false
     }
     
     // Updates the app's UI in quiz mode.
@@ -139,7 +142,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Answer label.
         switch state {
         case .askingQuestion:
-            answerLabel.text = ""
+            answerLabel.text = "?"
         case .showingAnswer:
             if answerIsCorrect {
                 answerLabel.text = "✅"
@@ -150,6 +153,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             answerLabel.text = ""
             displayScoreAlert()
         }
+        
+        // Buttons.
+        showAnswerButton.isHidden = true
     }
     
     // Runs after the user hits the Return key on the keyboard.

@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ty7-Kk-Lqn" userLabel="Show Answer Button">
-                                <rect key="frame" x="16" y="409" width="127" height="35"/>
+                                <rect key="frame" x="16" y="410" width="127" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Show Answer"/>
@@ -74,6 +74,7 @@
                         <outlet property="imageView" destination="RqQ-9g-eEL" id="7l2-33-g3E"/>
                         <outlet property="modeSelector" destination="OIf-tV-ovQ" id="Ody-al-FIp"/>
                         <outlet property="quizAnswer" destination="VZB-lv-ofu" id="nqB-35-ggX"/>
+                        <outlet property="showAnswerButton" destination="ty7-Kk-Lqn" id="l6R-Xm-JVA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
