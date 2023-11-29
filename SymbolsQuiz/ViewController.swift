@@ -97,7 +97,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         case .flashCard:
             updateFlashCardUI(symbolName: symbolName)
         case .quiz:
-            updateQuizUI()
+            updateQuizUI(symbolName: symbolName)
         }
     }
     
@@ -125,7 +125,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Updates the app's UI in quiz mode.
-    func updateQuizUI() {
+    func updateQuizUI(symbolName: String) {
         // Segmented control.
         modeSelector.selectedSegmentIndex = 1
         
@@ -153,7 +153,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if answerIsCorrect {
                 answerLabel.text = "✅"
             } else {
-                answerLabel.text = "❌"
+                answerLabel.text = "❌\nCorrect Answer: \(symbolName)"
             }
         case .showingScore:
             answerLabel.text = ""
