@@ -85,7 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateUI()
+        mode = .flashCard
     }
     
     // Updates the app's UI based on its mode and state.
@@ -227,7 +227,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Sets up a new quiz session.
     func setUpQuiz() {
-        symbolList = symbolList.shuffled()
+        symbolList = fixedSymbolList.shuffled()
         
         state = .askingQuestion
         currentSymbolIndex = 0
