@@ -57,8 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func next(_ sender: Any) {
         currentSymbolIndex += 1
         
-        // TODO: change this back to symbolList.count after testing.
-        if currentSymbolIndex >= 4 {
+        if currentSymbolIndex >= symbolList.count {
             currentSymbolIndex = 0
             
             if mode == .quiz {
