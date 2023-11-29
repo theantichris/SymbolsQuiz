@@ -16,7 +16,7 @@ enum State {
 }
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    let symbolList = ["A", "B", "C", "D", "E", "F", "G", "H", "I:J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U:V", "W", "X", "Y", "Z", "End of sentence"]
+    var symbolList = ["A", "B", "C", "D", "E", "F", "G", "H", "I:J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U:V", "W", "X", "Y", "Z", "End of sentence"]
     var currentSymbolIndex = 0
     
     var mode: Mode = .flashCard {
@@ -185,7 +185,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let textFieldContents = textField.text!
         
         // Determine whether the user answered correctly and update appropriate quiz state.
-        if textFieldContents.uppercased() == symbolList[currentSymbolIndex] {
+        if textFieldContents.uppercased() == symbolList[currentSymbolIndex].uppercased() {
             answerIsCorrect = true
             correctAnswerCount += 1
         } else {
@@ -223,6 +223,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Sets up a new quiz session.
     func setUpQuiz() {
+        symbolList = symbolList.shuffled()
+        
         state = .askingQuestion
         currentSymbolIndex = 0
         answerIsCorrect = false
