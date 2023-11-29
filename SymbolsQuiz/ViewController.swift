@@ -134,9 +134,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         switch state {
         case .askingQuestion:
+            quizAnswer.isEnabled = true
             quizAnswer.text = ""
             quizAnswer.becomeFirstResponder()
         case .showingAnswer:
+            quizAnswer.isEnabled = false
             quizAnswer.resignFirstResponder()
         case .showingScore:
             quizAnswer.isHidden = true
