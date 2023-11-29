@@ -16,7 +16,9 @@ enum State {
 }
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    var symbolList = ["A", "B", "C", "D", "E", "F", "G", "H", "I:J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U:V", "W", "X", "Y", "Z", "End of sentence"]
+    let fixedSymbolList = ["A", "B", "C", "D", "E", "F", "G", "H", "I:J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U:V", "W", "X", "Y", "Z", "End of sentence"]
+    var symbolList: [String] = []
+    
     var currentSymbolIndex = 0
     
     var mode: Mode = .flashCard {
@@ -217,6 +219,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Sets up a new flash card session.
     func setUpFlashCards() {
+        symbolList = fixedSymbolList
+        
         state = .askingQuestion
         currentSymbolIndex = 0
     }
